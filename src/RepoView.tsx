@@ -1,21 +1,47 @@
-import React, { useEffect, useState } from 'react';
-import { H4 } from '@blueprintjs/core';
+// React is imported for JSX support only:
+import React from 'react'
+
+import { Button, H4 } from '@blueprintjs/core';
 import { RepositoryViewProps } from '@riboseinc/paneron-extension-kit/types';
 
 
 export const RepositoryView: React.FC<RepositoryViewProps> =
-function () {
-  const [busy, setBusy] = useState(true);
+function (props) {
 
-  useEffect(() => {
-    setTimeout(() => {
+  // It is not possible to import and use React’s useEffect, useState etc. as one would usually do.
+  // We have to use them passed via props:
+  const [busy, setBusy] = props.React.useState(true);
+  const [randomID, setRandomID] = props.React.useState<string | undefined>(undefined);
+
+  async function handleGetRandomID() {
+    setBusy(true);
+    try {
+      // Props also pass some useful functions, such as for reading and changing repository data,
+      // or this one for getting a random string that could be used for a unique auto-generated object ID:
+      const id = await props.makeRandomID();
+      setRandomID(id);
+    } finally {
+      setBusy(false);
+    }
+  }
+
+  props.React.useEffect(() => {
+    // Extension component can’t directly use global window object’s native functions either.
+    // On such method is setTimeout. A usable version of setTimeout is passed via props instead:
+    props.setTimeout(() => {
       setBusy(false);
     }, 5000);
   }, []);
 
   return (
-    <>
-      <H4>{busy ? "Loading…" : "Hello!"}</H4>
-    </>
+    <div style={{ padding: '1rem' }}>
+      {busy
+        ? 'Loading…'
+        : <>
+            <H4>Hello!</H4>
+            <Button onClick={handleGetRandomID}>Get a random ID!</Button>
+            {randomID ? <p>{randomID}</p> : null}
+          </>}
+    </div>
   );
 };
