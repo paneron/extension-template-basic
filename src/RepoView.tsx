@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { H4 } from '@blueprintjs/core';
-import { RepositoryViewProps } from '@riboseinc/paneron-plugin-kit/types';
+import { RepositoryViewProps } from '@riboseinc/paneron-extension-kit/types';
 
 
 export const RepositoryView: React.FC<RepositoryViewProps> =

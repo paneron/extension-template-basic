@@ -905,10 +905,10 @@
     global-agent "^2.0.2"
     global-tunnel-ng "^2.7.1"
 
-"@riboseinc/paneron-plugin-kit@^1.0.0-alpha1":
+"@riboseinc/paneron-extension-kit@^1.0.0-alpha1":
   version "1.0.0-alpha1"
-  resolved "https://registry.yarnpkg.com/@riboseinc/paneron-plugin-kit/-/paneron-plugin-kit-1.0.0-alpha1.tgz#9457d55da595e1217b83e4337a7f086896fa7cc9"
-  integrity sha512-Za4h2ZZKdKdUBFuhSvERjVpa33FSgF5egSIJJn6ZbF9K3y7h0dJwRrglKDRW3pP2akoELGtAXH+JPEBeDY9pdg==
+  resolved "https://registry.yarnpkg.com/@riboseinc/paneron-extension-kit/-/paneron-extension-kit-1.0.0-alpha1.tgz#857c5fc14bfc1dcc005a85e643f24818980d5f45"
+  integrity sha512-0uwL5WFW7uQZMNs9x5HSZlFr0TqmskY7t4cmWyzZCb7B4hh08EzkXaSUR1RAgCbA5wi1bB3V9+OxSPkDizwNpA==
 
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
