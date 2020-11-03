@@ -1,6 +1,10 @@
+import { remote } from 'electron';
 import React, { useState, useEffect } from 'react';
 import { Button, H4 } from '@blueprintjs/core';
 import { RepositoryViewProps } from '@riboseinc/paneron-extension-kit/types';
+
+
+const setTimeout: typeof window.setTimeout = remote.getGlobal('setTimeout');
 
 
 export const RepositoryView: React.FC<RepositoryViewProps> =
@@ -26,7 +30,7 @@ function (props) {
   useEffect(() => {
     // Extension component can’t directly use global window object’s native functions either.
     // On such method is setTimeout. A usable version of setTimeout is passed via props instead:
-    props.setTimeout(() => {
+    setTimeout(() => {
       setBusy(false);
     }, 5000);
   }, []);
