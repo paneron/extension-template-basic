@@ -1,6 +1,4 @@
-// React is imported for JSX support only:
-import React from 'react'
-
+import React, { useState, useEffect } from 'react';
 import { Button, H4 } from '@blueprintjs/core';
 import { RepositoryViewProps } from '@riboseinc/paneron-extension-kit/types';
 
@@ -10,8 +8,8 @@ function (props) {
 
   // It is not possible to import and use React’s useEffect, useState etc. as one would usually do.
   // We have to use them passed via props:
-  const [busy, setBusy] = props.React.useState(true);
-  const [randomID, setRandomID] = props.React.useState<string | undefined>(undefined);
+  const [busy, setBusy] = useState(true);
+  const [randomID, setRandomID] = useState<string | undefined>(undefined);
 
   async function handleGetRandomID() {
     setBusy(true);
@@ -25,7 +23,7 @@ function (props) {
     }
   }
 
-  props.React.useEffect(() => {
+  useEffect(() => {
     // Extension component can’t directly use global window object’s native functions either.
     // On such method is setTimeout. A usable version of setTimeout is passed via props instead:
     props.setTimeout(() => {
