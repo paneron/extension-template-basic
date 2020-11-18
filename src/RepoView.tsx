@@ -1,14 +1,16 @@
 import { remote } from 'electron';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Button, H4 } from '@blueprintjs/core';
-import { RepositoryViewProps } from '@riboseinc/paneron-extension-kit/types';
+import { ExtensionViewContext } from '@riboseinc/paneron-extension-kit/context';
 
 
 const setTimeout: typeof window.setTimeout = remote.getGlobal('setTimeout');
 
 
-export const RepositoryView: React.FC<RepositoryViewProps> =
-function (props) {
+export const RepositoryView: React.FC<Record<never, never>> =
+function () {
+
+  const { makeRandomID } = useContext(ExtensionViewContext);
 
   // It is not possible to import and use React’s useEffect, useState etc. as one would usually do.
   // We have to use them passed via props:
@@ -20,7 +22,7 @@ function (props) {
     try {
       // Props also pass some useful functions, such as for reading and changing repository data,
       // or this one for getting a random string that could be used for a unique auto-generated object ID:
-      const id = await props.makeRandomID();
+      const id = await makeRandomID();
       setRandomID(id);
     } finally {
       setBusy(false);
