@@ -4,7 +4,7 @@
   "description": "INSERT_DESCRIPTION_HERE",
   "main": "plugin.js",
   "repository": "https://github.com/riboseinc/paneron-extension-INSERT_NAME_HERE",
-  "author": "Ribose Inc. <open.source@ribose.com>",
+  "author": "DEVELOPER NAME <EMAIL>",
   "scripts": {
     "build": "rm -r compiled dist; mkdir compiled dist; tsc --outDir compiled; babel compiled --out-dir dist; cp package.json compiled/*.d.ts compiled/*.js.map dist/"
   },
